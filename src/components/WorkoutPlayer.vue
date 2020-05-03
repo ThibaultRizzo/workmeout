@@ -9,17 +9,17 @@
           :key="workout.id"
         >{{workout.title}}</option>
       </select>
-      <span>Selected: {{ isFinished }}</span>
     </div>
-    <span>Selected: {{ currentStep }}</span>
 
     <div v-if="selectedWorkout">
-      <h2>{{`${selectedWorkout.title} - ${this.currentOrder}`}}</h2>
+      <h2>{{selectedWorkout.title}}</h2>
 
       <div v-if="currentOrder === 0">
-        <h3>Let's get started</h3>
+        <h3 class="important">Let's get started</h3>
 
-        <button @click="goToNextTick">Start</button>
+        <button @click="goToNextTick">
+          <Bomb />Start
+        </button>
       </div>
 
       <div v-else-if="isRestTime">
@@ -55,11 +55,13 @@
 <script>
 import { mapGetters } from "vuex";
 import BaseTimer from "@/components/BaseTimer";
+import Bomb from "vue-material-design-icons/Bomb.vue";
 import moment from "moment";
 
 export default {
   components: {
-    BaseTimer
+    BaseTimer,
+    Bomb
   },
   computed: {
     ...mapGetters({ workouts: "workouts" })
@@ -96,7 +98,7 @@ export default {
   },
   methods: {
     goToNextTick() {
-      if (this.isRestTime) {
+      if (this.isRestTime || this.currentOrder === 0) {
         this.currentOrder++;
         this.isRestTime = false;
       } else {
@@ -111,3 +113,9 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.important {
+  padding: 10px;
+  font-size: 2em;
+}
+</style>

@@ -40,9 +40,6 @@ const COLOR_CODES = {
 };
 
 export default {
-  beforeCreate() {
-    alert(this.timeLimit);
-  },
   props: {
     time: {
       type: Number,
