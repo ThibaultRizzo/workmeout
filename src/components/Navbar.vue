@@ -2,10 +2,11 @@
   <header>
     <div id="logo-container">
       <router-link to="dashboard">
-        <img id="logo" alt="Logo" src="../assets/WorkMeOut_Logo.svg" />
+        <logo id="logo" alt="Logo" />
+        <!-- <img  src="../assets/WorkMeOut_Logo.svg" /> -->
       </router-link>
     </div>
-    <h3 class="title">WorkMeOut</h3>
+    <h3 class="title">Work Me Out</h3>
     <nav>
       <router-link to="dashboard">Dashboard</router-link>
       <router-link to="workout-player">Workout</router-link>
@@ -17,10 +18,12 @@
 </template>
 <script>
 import fb from "../firebaseConfig";
+import logo from "../assets/WorkMeOut_Logo.svg";
 import Logout from "vue-material-design-icons/LogoutVariant.vue";
 export default {
   components: {
-    Logout
+    Logout,
+    logo
   },
   methods: {
     logout() {
@@ -37,26 +40,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$HEADER_SIZE: 15vh;
 header {
-  height: 20vh;
+  height: $HEADER_SIZE;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 12px 2px #efefef;
+  border-bottom: 3px solid #efefef;
 }
 nav {
   display: flex;
   align-items: center;
 }
 #logo-container {
-  height: 100%;
-  padding: 0 10px;
+  box-sizing: content-box;
+  height: 1.5 * $HEADER_SIZE;
+  padding-top: $HEADER_SIZE;
+  padding-left: $HEADER_SIZE / 2;
+  background-color: #fafafa;
+  a {
+    padding: 0;
+  }
 }
 #logo {
-  height: 80%;
+  height: 100%;
   width: auto;
-  padding: 10%;
 }
 
 .title {

@@ -4,6 +4,7 @@ import store from "./store";
 import router from "./router";
 import fb from "./firebaseConfig";
 import "./styles.scss";
+import "./plugins/material";
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === "development";
