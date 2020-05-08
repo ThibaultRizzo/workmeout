@@ -157,7 +157,7 @@
 import fb from "../firebaseConfig";
 import { mapGetters } from "vuex";
 import moment from "moment";
-import { timeToSeconds } from "../utils/TimeUtils";
+import { timeToSeconds, secondsToHumanDuration } from "../utils/TimeUtils";
 
 const DEFAULT_FORM_STATE = {
   title: "",
@@ -198,10 +198,10 @@ export default {
   },
   data() {
     return {
-      workoutForm: DEFAULT_FORM_STATE,
+      workoutForm: { ...DEFAULT_FORM_STATE },
       updatedId: null,
       showForm: false,
-      stepper: DEFAULT_STEPPER,
+      stepper: { ...DEFAULT_STEPPER },
       expandedWorkout: null
     };
   },
@@ -274,8 +274,8 @@ export default {
       // TODO: Reorder all further steps
     },
     resetForm() {
-      this.workoutForm = DEFAULT_FORM_STATE;
-      this.stepper = DEFAULT_STEPPER;
+      this.workoutForm = { ...DEFAULT_FORM_STATE };
+      this.stepper = { ...DEFAULT_STEPPER };
     },
     createWorkout() {
       fb.workoutsCollection
@@ -287,13 +287,15 @@ export default {
         .catch(err => console.error(err));
     },
     deleteWorkout(id) {
-      fb.workoutsCollection
-        .doc(id)
-        .delete()
-        .then(() => {
-          console.log("Deleted successfully");
-        })
-        .catch(err => console.error(err));
+      if (confirm("Are you sure you want to delete this workout ?")) {
+        fb.workoutsCollection
+          .doc(id)
+          .delete()
+          .then(() => {
+            console.log("Deleted successfully");
+          })
+          .catch(err => console.error(err));
+      }
     },
     updateWorkout(id) {
       fb.workoutsCollection
@@ -306,17 +308,15 @@ export default {
         .catch(err => console.error(err));
     },
     getTotalDuration(workout) {
-      return moment
-        .duration(
-          workout.steps
-            .map(s =>
-              workout.isByRep
-                ? this.repNbToRepTime(s.repNb)
-                : timeToSeconds(s.repTime)
-            )
-            .reduce((acc, val) => acc + val, 0) * 1000
-        )
-        .humanize();
+      return secondsToHumanDuration(
+        workout.steps
+          .map(s =>
+            workout.isByRep
+              ? this.repNbToRepTime(s.repNb)
+              : timeToSeconds(s.repTime)
+          )
+          .reduce((acc, val) => acc + val, 0)
+      );
     },
     repNbToRepTime(repNb) {
       return repNb * 3; // Arbitrarely set avg rep takes 3 seconds to do

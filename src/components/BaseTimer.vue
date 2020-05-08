@@ -17,10 +17,23 @@
       </g>
     </svg>
     <span class="base-timer__label">{{ formattedTimeLeft }}</span>
+    <Play v-if="isTimePaused" :disabled="timeLeft === 0" @click="play" />
+    <Pause v-else :disabled="timeLeft === 0" @click="pause" />
+
+    <SkipNext @click="skip" />
+
+    <div id="slot">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script>
+import Play from "vue-material-design-icons/Play";
+import SkipNext from "vue-material-design-icons/SkipNext.vue";
+import Pause from "vue-material-design-icons/Pause.vue";
+import { Synth } from "tone";
+
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
@@ -39,6 +52,18 @@ const COLOR_CODES = {
   }
 };
 
+const synth = new Synth({
+  oscillator: {
+    type: "sine2"
+  },
+  envelope: {
+    attack: 1,
+    decay: 1,
+    sustain: 4,
+    release: 1
+  }
+}).toMaster();
+
 export default {
   props: {
     time: {
@@ -46,11 +71,17 @@ export default {
       default: 30
     }
   },
+  components: {
+    Play,
+    SkipNext,
+    Pause
+  },
   data() {
     return {
       timeLimit: this.time,
       timePassed: 0,
-      timerInterval: null
+      timerInterval: null,
+      isTimePaused: false
     };
   },
 
@@ -106,12 +137,52 @@ export default {
   },
 
   methods: {
+    pause() {
+      if (!this.isTimePaused && this.timeLeft > 0) {
+        this.isTimePaused = true;
+        clearInterval(this.timerInterval);
+      }
+    },
+    play() {
+      if (this.isTimePaused && this.timeLeft > 0) {
+        this.isTimePaused = false;
+        this.timePassed++;
+        this.startTimer();
+      }
+    },
+    skip() {
+      this.timePassed = this.timeLimit;
+    },
     onTimesUp() {
+      // const audio = new Audio(AudioFile);
+      // audio.play();
       clearInterval(this.timerInterval);
+      setTimeout(() => {
+        this.$emit("timer-up");
+        // audio.pause();
+        // audio.currentTime = 0;
+      }, 2000);
     },
 
     startTimer() {
-      this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
+      this.timerInterval = setInterval(() => {
+        if (this.timeLeft === 3 || this.timeLeft === 2) {
+          console.log("Trois");
+          console.log("Trois");
+          synth.triggerAttackRelease("A4", "8n");
+          this.timePassed += 1;
+        } else if (this.timeLeft === 1) {
+          console.log("Un");
+          synth.triggerAttackRelease("B5", "4n");
+          this.timePassed += 1;
+        } else if (this.timeLeft < -1) {
+          console.log("Zero");
+          console.log("times up: ", this.timePassed, " ", this.timeLeft);
+          this.onTimesUp();
+        } else {
+          this.timePassed += 1;
+        }
+      }, 1000);
     }
   }
 };
@@ -169,5 +240,39 @@ export default {
     justify-content: center;
     font-size: 48px;
   }
+}
+
+.material-design-icon {
+  cursor: pointer;
+  position: absolute;
+  height: 42px;
+  top: 200px;
+  width: 47px;
+  &.play-icon,
+  &.pause-icon {
+    left: 99px;
+  }
+  &.skip-next-icon {
+    left: 159px;
+  }
+  svg {
+    height: 100%;
+    width: auto;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+#slot {
+  position: absolute;
+  top: 70px;
+  width: 160px;
+  height: 50px;
+  left: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
 }
 </style>

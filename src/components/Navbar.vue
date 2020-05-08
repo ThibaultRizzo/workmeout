@@ -1,10 +1,8 @@
 <template>
   <header>
     <div id="logo-container">
-      <router-link to="dashboard">
-        <logo id="logo" alt="Logo" />
-        <!-- <img  src="../assets/WorkMeOut_Logo.svg" /> -->
-      </router-link>
+      <router-link to="dashboard"></router-link>
+      <img id="logo" alt="Logo" src="../assets/WorkMeOut_Logo.svg" />
     </div>
     <h3 class="title">Work Me Out</h3>
     <nav>
@@ -18,12 +16,10 @@
 </template>
 <script>
 import fb from "../firebaseConfig";
-import logo from "../assets/WorkMeOut_Logo.svg";
 import Logout from "vue-material-design-icons/LogoutVariant.vue";
 export default {
   components: {
-    Logout,
-    logo
+    Logout
   },
   methods: {
     logout() {
