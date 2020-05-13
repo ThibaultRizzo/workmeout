@@ -4,7 +4,7 @@ import firebase from "firebase";
 
 import Login from "@/components/Login";
 import Register from "@/components/Register";
-import Dashboard from "@/components/Dashboard";
+import Workouts from "@/components/Workouts";
 import WorkoutPlayer from "@/components/WorkoutPlayer";
 
 Vue.use(Router);
@@ -12,7 +12,7 @@ const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    { path: "*", redirect: "/dashboard" },
+    { path: "*", redirect: "/workouts" },
     {
       path: "/login",
       name: "Login",
@@ -24,9 +24,9 @@ const router = new Router({
       component: Register,
     },
     {
-      path: "/dashboard",
-      name: "Dashboard",
-      component: Dashboard,
+      path: "/workouts",
+      name: "Workouts",
+      component: Workouts,
       meta: {
         requiresAuth: true,
       },

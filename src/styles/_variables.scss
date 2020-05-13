@@ -1,0 +1,13 @@
+@use "sass:color";
+
+// Colors
+$primary: #d24040;
+$light-primary: lighten($primary, 40%);
+// $light-primary: color.adjust($primary, $lightness: 30%);
+$accent: black;
+$white: #fafafa;
+$warning: #ffdd00;
+
+// Typography
+$typo_title: "Stencil";
+$typo_body: "DejaVu Serif";

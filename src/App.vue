@@ -20,17 +20,23 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $typo_body, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 100vh;
+  padding: 5vh 5vw;
 }
 
 main {
-  height: 70vh;
-  margin: 5vh 10vh;
+  margin: 5vh 0;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    margin: 5vh 0vh;
+  }
 }
 </style>

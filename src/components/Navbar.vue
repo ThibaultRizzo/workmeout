@@ -1,25 +1,23 @@
 <template>
   <header>
     <div id="logo-container">
-      <router-link to="dashboard"></router-link>
-      <img id="logo" alt="Logo" src="../assets/WorkMeOut_Logo.svg" />
+      <router-link to="workouts"></router-link>
+      <img id="logo" alt="Logo" src="../assets/logo.svg" />
     </div>
-    <h3 class="title">Work Me Out</h3>
-    <nav>
-      <router-link to="dashboard">Dashboard</router-link>
-      <router-link to="workout-player">Workout</router-link>
+    <h1 id="navbar__title">Work Me Out</h1>
+    <!-- <nav>
       <a @click="logout">
         <Logout />
       </a>
-    </nav>
+    </nav>-->
   </header>
 </template>
 <script>
 import fb from "../firebaseConfig";
-import Logout from "vue-material-design-icons/LogoutVariant.vue";
+// import Logout from "vue-material-design-icons/LogoutVariant.vue";
 export default {
   components: {
-    Logout
+    // Logout
   },
   methods: {
     logout() {
@@ -39,22 +37,24 @@ export default {
 $HEADER_SIZE: 15vh;
 header {
   height: $HEADER_SIZE;
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-bottom: 3px solid #efefef;
+  border-bottom: 4px solid $accent;
 }
 nav {
   display: flex;
   align-items: center;
 }
 #logo-container {
+  position: absolute;
+  left: 0;
   box-sizing: content-box;
   height: 1.5 * $HEADER_SIZE;
   padding-top: $HEADER_SIZE;
-  padding-left: $HEADER_SIZE / 2;
-  background-color: #fafafa;
+  background-color: $white;
   a {
     padding: 0;
   }
@@ -64,10 +64,29 @@ nav {
   width: auto;
 }
 
-.title {
-  font-size: 2em;
+#navbar__title {
+  font-family: $typo_title;
+  font-size: 3.5em;
 }
 a {
   padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    height: 18vh;
+    padding-top: 5vh;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    #logo-container {
+      padding-top: 1vh;
+      padding-left: 4vh;
+      height: 18.5vh;
+    }
+    h3.title {
+      font-size: 2.2em;
+    }
+  }
 }
 </style>

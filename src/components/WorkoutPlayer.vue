@@ -75,7 +75,7 @@ import { mapGetters } from "vuex";
 import BaseTimer from "@/components/BaseTimer";
 import RepLayout from "@/components/RepLayout";
 import Bomb from "vue-material-design-icons/Bomb.vue";
-import moment from "moment";
+import moment from "moment/moment";
 import { timeToSeconds, secondsToHumanDuration } from "../utils/TimeUtils";
 
 export default {

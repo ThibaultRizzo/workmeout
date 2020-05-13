@@ -1,0 +1,81 @@
+<svg id="WorkMeOut_Logo" xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250">
+  <g id="Ellipse_2" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="4">
+    <circle cx="125" cy="125" r="125" stroke="none"/>
+    <circle cx="125" cy="125" r="123" fill="none"/>
+  </g>
+  <g id="Big_Lines" data-name="Big Lines" transform="translate(10 9.868)">
+    <line id="_55" data-name="55" y2="10" transform="translate(57.5 15.539) rotate(-30)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_50" data-name="50" y2="10" transform="translate(15.407 57.632) rotate(-60)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_45" data-name="45" y2="10" transform="translate(0 115.132) rotate(-90)" fill="none" stroke="#000" stroke-width="6" opacity="0.7"/>
+    <line id="_40" data-name="40" y2="10" transform="translate(15.407 172.632) rotate(-120)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_35" data-name="35" y2="10" transform="translate(57.5 214.725) rotate(-150)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_30" data-name="30" y2="10" transform="translate(115 230.132) rotate(180)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_25" data-name="25" y2="10" transform="translate(172.5 214.725) rotate(150)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_20" data-name="20" y2="10" transform="translate(214.593 172.632) rotate(120)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_15" data-name="15" y2="10" transform="translate(230 115.132) rotate(90)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_10" data-name="10" y2="10" transform="translate(214.593 57.632) rotate(60)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_5" data-name="5" y2="10" transform="translate(172.5 15.539) rotate(30)" fill="none" stroke="#000" stroke-width="6"/>
+    <line id="_0" data-name="0" y2="9.868" transform="translate(115 0)" fill="none" stroke="#000" stroke-width="6"/>
+  </g>
+  <g id="Small_Lines" data-name="Small Lines" transform="translate(10.63 9.868)">
+    <line id="Template" y2="5" transform="matrix(0.995, 0.105, -0.105, 0.995, 126.391, 0.762)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-2" data-name="Template" y2="5" transform="matrix(0.978, 0.208, -0.208, 0.978, 138.28, 2.645)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-3" data-name="Template" y2="5" transform="matrix(0.951, 0.309, -0.309, 0.951, 149.907, 5.76)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-4" data-name="Template" y2="5" transform="matrix(0.914, 0.407, -0.407, 0.914, 161.145, 10.074)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-5" data-name="Template" y2="5.482" transform="translate(114.37 0)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-6" data-name="Template" y2="5.482" transform="translate(114.37 0)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-7" data-name="Template" y2="5.482" transform="translate(114.37 0)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-8" data-name="Template" y2="5.482" transform="translate(114.37 0)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-9" data-name="Template" y2="5" transform="matrix(0.995, -0.105, 0.105, 0.995, 102.349, 0.762)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-10" data-name="Template" y2="5" transform="matrix(0.978, -0.208, 0.208, 0.978, 90.46, 2.645)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-11" data-name="Template" y2="5" transform="matrix(0.951, -0.309, 0.309, 0.951, 78.833, 5.76)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-12" data-name="Template" y2="5" transform="matrix(0.914, -0.407, 0.407, 0.914, 67.595, 10.074)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-13" data-name="Template" y2="5" transform="matrix(0.809, -0.588, 0.588, 0.809, 46.775, 22.095)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-14" data-name="Template" y2="5" transform="translate(37.42 29.67) rotate(-42)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-15" data-name="Template" y2="5" transform="translate(28.908 38.182) rotate(-48)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-16" data-name="Template" y2="5" transform="matrix(0.588, -0.809, 0.809, 0.588, 21.333, 47.536)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-17" data-name="Template" y2="5" transform="matrix(0.407, -0.914, 0.914, 0.407, 9.312, 68.357)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-18" data-name="Template" y2="5" transform="matrix(0.309, -0.951, 0.951, 0.309, 4.999, 79.595)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-19" data-name="Template" y2="5" transform="matrix(0.208, -0.978, 0.978, 0.208, 1.883, 91.222)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-20" data-name="Template" y2="5" transform="matrix(0.105, -0.995, 0.995, 0.105, 0, 103.111)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-21" data-name="Template" y2="5" transform="matrix(-0.105, -0.995, 0.995, -0.105, 0, 127.152)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-22" data-name="Template" y2="5" transform="matrix(-0.208, -0.978, 0.978, -0.208, 1.883, 139.041)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-23" data-name="Template" y2="5" transform="matrix(-0.309, -0.951, 0.951, -0.309, 4.999, 150.669)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-24" data-name="Template" y2="5" transform="matrix(-0.407, -0.914, 0.914, -0.407, 9.312, 161.906)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-25" data-name="Template" y2="5" transform="matrix(-0.588, -0.809, 0.809, -0.588, 21.333, 182.727)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-26" data-name="Template" y2="5" transform="translate(28.908 192.082) rotate(-132)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-27" data-name="Template" y2="5" transform="translate(37.42 200.593) rotate(-138)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-28" data-name="Template" y2="5" transform="matrix(-0.809, -0.588, 0.588, -0.809, 46.775, 208.169)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-29" data-name="Template" y2="5" transform="matrix(-0.914, -0.407, 0.407, -0.914, 67.595, 220.189)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-30" data-name="Template" y2="5" transform="matrix(-0.951, -0.309, 0.309, -0.951, 78.833, 224.503)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-31" data-name="Template" y2="5" transform="matrix(-0.978, -0.208, 0.208, -0.978, 90.46, 227.619)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-32" data-name="Template" y2="5" transform="matrix(-0.995, -0.105, 0.105, -0.995, 102.349, 229.502)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-33" data-name="Template" y2="5" transform="matrix(-0.995, 0.105, -0.105, -0.995, 126.391, 229.502)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-34" data-name="Template" y2="5" transform="matrix(-0.978, 0.208, -0.208, -0.978, 138.28, 227.619)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-35" data-name="Template" y2="5" transform="matrix(-0.951, 0.309, -0.309, -0.951, 149.907, 224.503)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-36" data-name="Template" y2="5" transform="matrix(-0.914, 0.407, -0.407, -0.914, 161.145, 220.189)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-37" data-name="Template" y2="5" transform="matrix(-0.809, 0.588, -0.588, -0.809, 181.965, 208.169)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-38" data-name="Template" y2="5" transform="translate(191.32 200.593) rotate(138)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-39" data-name="Template" y2="5" transform="translate(199.832 192.082) rotate(132)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-40" data-name="Template" y2="5" transform="matrix(-0.588, 0.809, -0.809, -0.588, 207.407, 182.727)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-41" data-name="Template" y2="5" transform="matrix(-0.407, 0.914, -0.914, -0.407, 219.428, 161.906)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-42" data-name="Template" y2="5" transform="matrix(-0.309, 0.951, -0.951, -0.309, 223.742, 150.669)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-43" data-name="Template" y2="5" transform="matrix(-0.208, 0.978, -0.978, -0.208, 226.857, 139.041)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-44" data-name="Template" y2="5" transform="matrix(-0.105, 0.995, -0.995, -0.105, 228.74, 127.152)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-45" data-name="Template" y2="5" transform="matrix(0.105, 0.995, -0.995, 0.105, 228.74, 103.111)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-46" data-name="Template" y2="5" transform="matrix(0.208, 0.978, -0.978, 0.208, 226.857, 91.222)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-47" data-name="Template" y2="5" transform="matrix(0.309, 0.951, -0.951, 0.309, 223.742, 79.595)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-48" data-name="Template" y2="5" transform="matrix(0.407, 0.914, -0.914, 0.407, 219.428, 68.357)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-49" data-name="Template" y2="5" transform="matrix(0.588, 0.809, -0.809, 0.588, 207.407, 47.536)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-50" data-name="Template" y2="5" transform="translate(199.832 38.182) rotate(48)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-51" data-name="Template" y2="5" transform="translate(191.32 29.67) rotate(42)" fill="none" stroke="#000" stroke-width="3"/>
+    <line id="Template-52" data-name="Template" y2="5" transform="matrix(0.809, 0.588, -0.588, 0.809, 181.965, 22.095)" fill="none" stroke="#000" stroke-width="3"/>
+  </g>
+  <rect id="Rectangle_3" data-name="Rectangle 3" width="10" height="50" transform="translate(165 100)" fill="#c30000"/>
+  <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="40" transform="translate(177.5 105)" fill="#c30000"/>
+  <rect id="Rectangle_5" data-name="Rectangle 5" width="7.5" height="25" transform="translate(190 112.5)" fill="#c30000"/>
+  <rect id="Rectangle_6" data-name="Rectangle 6" width="10" height="50" transform="translate(75 100)" fill="#c30000"/>
+  <rect id="Rectangle_7" data-name="Rectangle 7" width="10" height="40" transform="translate(62.5 105)" fill="#c30000"/>
+  <rect id="Rectangle_8" data-name="Rectangle 8" width="7.5" height="25" transform="translate(52.5 112.5)" fill="#c30000"/>
+  <line id="Line_13" data-name="Line 13" x2="75" transform="translate(87.5 125)" fill="none" stroke="#d24040" stroke-width="6"/>
+</svg>
