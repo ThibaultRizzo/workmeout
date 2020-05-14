@@ -12,14 +12,6 @@ let app;
 fb.auth.onAuthStateChanged((user) => {
   store.commit("setCurrentUser", user);
 
-  fb.workoutsCollection
-    .orderBy("createdOn", "desc")
-    .onSnapshot((querySnapshot) => {
-      store.commit(
-        "setWorkouts",
-        querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    });
   if (!app) {
     app = new Vue({
       el: "#app",

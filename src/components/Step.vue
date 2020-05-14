@@ -1,11 +1,11 @@
 <template>
   <div class="step__wrapper">
-    <div class="step" :class="[step.isByRep ? 'by-rep' : 'by-time']">
+    <div v-if="showStep" class="step" :class="[step.isByRep ? 'by-rep' : 'by-time']">
       <span class="order">{{step.order}}</span>
       <span class="exercise">{{step.exercise}}</span>
       <span class="exercise-nb">{{step.isByRep ? step.repNb : step.repTime}}</span>
     </div>
-    <div v-if="step.restTime" class="rest-time">{{step.restTime}}</div>
+    <div v-if="step.restTime && showRestTime" class="rest-time">{{step.restTime}}</div>
   </div>
 </template>
 
@@ -15,6 +15,14 @@ export default {
     step: {
       type: Object,
       required: true
+    },
+    showStep: {
+      type: Boolean,
+      default: true
+    },
+    showRestTime: {
+      type: Boolean,
+      default: true
     }
   }
 };

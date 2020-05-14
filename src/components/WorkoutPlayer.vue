@@ -1,80 +1,77 @@
 <template>
-  <section id="workout-player">
-    <div id="workout-selection">
-      <select v-model="selectedWorkout">
-        <option disabled value="null">Please select one</option>
-        <option
-          v-for="workout in workouts.data"
-          v-bind:value="workout"
-          :key="workout.id"
-        >{{workout.title}}</option>
-      </select>
-    </div>
+  <transition name="slide">
+    <section id="workout-player">
+      <button @click="$router.push('/workouts')">
+        <Return />Return
+      </button>
+      <div v-if="selectedWorkout" id="current-workout">
+        <h2>{{selectedWorkout.title}}</h2>
 
-    <div v-if="selectedWorkout" id="current-workout">
-      <h2>{{selectedWorkout.title}}</h2>
+        <div v-if="currentOrder === 0">
+          <h3 class="important">Let's get started</h3>
 
-      <div v-if="currentOrder === 0">
-        <h3 class="important">Let's get started</h3>
+          <button class="primary" @click="goToNextTick">
+            <Bomb />Start
+          </button>
+        </div>
 
-        <button @click="goToNextTick">
-          <Bomb />Start
-        </button>
+        <div v-else-if="isRestTime">
+          <Step :step="currentStep" :showStep="false" />
+          <BaseTimer
+            id="rest-time-timer"
+            key="rest-time-timer"
+            :time="timeToSeconds(currentStep.restTime)"
+            @timer-up="goToNextTick"
+          >
+            <strong>Rest!</strong>
+          </BaseTimer>
+        </div>
+
+        <div v-else-if="isFinished">
+          <h3>You are done!!!</h3>
+        </div>
+
+        <div v-else-if="currentStep.isByRep">
+          <Step :step="currentStep" :showRestTime="false" />
+          <RepLayout :repNb="currentStep.repNb" @done="goToNextTick">
+            <h3>{{currentStep.exercise}}</h3>
+          </RepLayout>
+        </div>
+
+        <div v-else-if="!currentStep.isByRep">
+          <Step :step="currentStep" :showRestTime="false" />
+          <BaseTimer
+            id="rep-time-timer"
+            key="rep-time-timer"
+            :time="timeToSeconds(currentStep.repTime)"
+            @timer-up="goToNextTick"
+          >
+            <strong>{{currentStep.exercise}}</strong>
+          </BaseTimer>
+        </div>
       </div>
 
-      <div v-else-if="isRestTime">
-        <BaseTimer
-          id="rest-time-timer"
-          key="rest-time-timer"
-          :time="timeToSeconds(selectedWorkout.restTime)"
-          @timer-up="goToNextTick"
-        >
-          <strong>Rest!</strong>
-        </BaseTimer>
+      <div class="workout-program">
+        <div class="horizontal-path" />
+        <Step
+          v-for="(step, i) in stepsLeft"
+          :key="i"
+          :step="step"
+          :showStep="!(currentOrder === step.order && isRestTime)"
+          class="exercise-wrapper"
+        />
       </div>
-
-      <div v-else-if="isFinished">
-        <h3>You are done!!!</h3>
-      </div>
-
-      <div v-else-if="selectedWorkout.isByRep">
-        <RepLayout :repNb="currentStep.repNb" @done="goToNextTick">
-          <h3>{{currentStep.exercise}}</h3>
-        </RepLayout>
-      </div>
-
-      <div v-else-if="!selectedWorkout.isByRep">
-        <BaseTimer
-          id="rep-time-timer"
-          key="rep-time-timer"
-          :time="timeToSeconds(currentStep.repTime)"
-          @timer-up="goToNextTick"
-        >
-          <strong>{{currentStep.exercise}}</strong>
-        </BaseTimer>
-      </div>
-    </div>
-
-    <div class="workout-program">
-      <div class="horizontal-path" />
-      <div v-for="(step, i) in stepsLeft" :key="step.order" class="exercise-wrapper">
-        <div
-          class="rest-time"
-          v-if="!isRestTime || i !==0"
-        >{{getDuration(selectedWorkout.restTime)}}</div>
-        <h5
-          class="exercise"
-        >{{selectedWorkout.isByRep ? `${step.repNb} ${step.exercise}` : `${step.exercise} for ${getDuration(step.repTime)}`}}</h5>
-      </div>
-    </div>
-  </section>
+    </section>
+  </transition>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import BaseTimer from "@/components/BaseTimer";
 import RepLayout from "@/components/RepLayout";
+import Step from "@/components/Step";
 import Bomb from "vue-material-design-icons/Bomb.vue";
+import Return from "vue-material-design-icons/ArrowLeft.vue";
 import moment from "moment/moment";
 import { timeToSeconds, secondsToHumanDuration } from "../utils/TimeUtils";
 
@@ -82,7 +79,22 @@ export default {
   components: {
     BaseTimer,
     RepLayout,
+    Step,
+    Return,
     Bomb
+  },
+  props: {
+    id: {
+      required: true
+    }
+  },
+  data() {
+    return {
+      currentOrder: 0,
+      currentStep: null,
+      isRestTime: false,
+      isFinished: false
+    };
   },
   computed: {
     stepsLeft: function() {
@@ -95,18 +107,20 @@ export default {
             .sort((a, b) => a.order - b.order)
         : [];
     },
-    ...mapGetters({ workouts: "workouts" })
+    selectedWorkout() {
+      return this.getWorkoutById(this.id);
+    },
+    ...mapGetters(["getWorkoutById"])
   },
-  data() {
-    return {
-      selectedWorkout: null,
-      currentOrder: 0,
-      currentStep: null,
-      isRestTime: false,
-      isFinished: false
-    };
+  created() {
+    this.fetchWorkoutsIfNeeded();
   },
+
   watch: {
+    workouts() {
+      console.log("Done");
+      this.selectedWorkout = this.getWorkoutById(this.id);
+    },
     selectedWorkout: function() {
       this.currentOrder = 0;
       this.currentStep = null;
@@ -129,6 +143,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["fetchWorkoutsIfNeeded"]),
     getDuration: function(time) {
       return secondsToHumanDuration(timeToSeconds(time));
     },
@@ -167,13 +182,13 @@ export default {
   position: relative;
 
   .rest-time {
-    background: #41b883;
+    background: $primary;
     color: #fafafa;
     padding: 10px;
     border-radius: 10px;
   }
   .exercise {
-    border: 2px solid #41b883;
+    border: 2px solid $primary;
     border-radius: 10px;
     background: #fafafa;
     color: grey;
@@ -193,7 +208,7 @@ export default {
   top: -30px;
   width: 0;
   height: 100%;
-  border: 1px solid #41b883;
+  border: 3px solid $primary;
   z-index: -1;
 }
 </style>

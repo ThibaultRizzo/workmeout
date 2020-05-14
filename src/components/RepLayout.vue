@@ -33,7 +33,7 @@ export default {
   align-items: center;
   background: #41b883;
   color: white;
-  font-size: 48px;
+  font-size: 32px;
   border-radius: 50%;
   font-weight: bold;
 }

@@ -22,7 +22,7 @@
           :workout="workout"
           @update="selectWorkout(workout)"
           @delete="deleteWorkout(workout.id)"
-          @play="alert('o')"
+          @play="$router.push(`/play/${workout.id}`)"
         />
       </template>
       <template v-else>
@@ -33,7 +33,7 @@
 </template>
 <script>
 import fb from "../firebaseConfig";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import WorkoutCard from "@/components/WorkoutCard";
 import WorkoutForm from "@/components/WorkoutForm";
@@ -50,7 +50,11 @@ export default {
       updatableWorkout: null
     };
   },
+  created() {
+    this.fetchWorkoutsIfNeeded();
+  },
   methods: {
+    ...mapActions(["fetchWorkoutsIfNeeded"]),
     selectWorkout(workout) {
       this.updatableWorkout = this.cloneWorkout(workout);
       this.$refs.expandableButton.expand();

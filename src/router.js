@@ -32,9 +32,10 @@ const router = new Router({
       },
     },
     {
-      path: "/workout-player",
+      path: "/play/:id",
       name: "Workout Player",
       component: WorkoutPlayer,
+      props: true,
       meta: {
         requiresAuth: true,
       },
