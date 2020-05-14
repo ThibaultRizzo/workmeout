@@ -58,11 +58,13 @@ export default {
     getTotalDuration(workout) {
       return secondsToHumanDuration(
         workout.steps
-          .map(s =>
-            workout.isByRep
+          .map(s => {
+            const rep = s.isByRep
               ? this.repNbToRepTime(s.repNb)
-              : timeToSeconds(s.repTime)
-          )
+              : timeToSeconds(s.repTime);
+            const rest = s.restTime ? timeToSeconds(s.restTime) : 0;
+            return rep + rest;
+          })
           .reduce((acc, val) => acc + val, 0)
       );
     },

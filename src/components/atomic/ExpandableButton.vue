@@ -26,12 +26,19 @@ export default {
     }
   },
   mounted: function() {
-    this.contentScrollHeight = this.$refs.expanding.scrollHeight;
-  },
-  updated: function() {
-    if (this.contentScrollHeight !== this.$refs.expanding.scrollHeight) {
-      this.contentScrollHeight = this.$refs.expanding.scrollHeight;
-    }
+    this.observer = new MutationObserver(
+      function() {
+        this.contentScrollHeight = this.$refs.expanding.scrollHeight;
+      }.bind(this)
+    );
+
+    // Setup the observer
+    this.observer.observe(this.$el, {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
   },
   data() {
     return {
@@ -43,6 +50,12 @@ export default {
     toggleExpand() {
       this.isExpanded = !this.isExpanded;
       this.$emit(this.isExpanded ? "expand" : "collapse");
+    },
+    collapse() {
+      this.isExpanded = false;
+    },
+    expand() {
+      this.isExpanded = true;
     }
   }
 };
@@ -92,7 +105,7 @@ button.expand-button {
   }
 }
 .expand-content {
-  transition: max-height 0.2s ease-in, transform 0.5s ease-in;
+  transition: max-height 0.5s ease-in, transform 0.5s ease-in;
   flex-basis: 100%;
   width: 0;
   transform: scaleY(0);
