@@ -21,6 +21,7 @@
             id="rest-time-timer"
             key="rest-time-timer"
             :time="timeToSeconds(currentStep.restTime)"
+            :isRest="true"
             @timer-up="goToNextTick"
           >
             <strong>Rest!</strong>

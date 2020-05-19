@@ -32,7 +32,6 @@
 import Play from "vue-material-design-icons/Play";
 import SkipNext from "vue-material-design-icons/SkipNext.vue";
 import Pause from "vue-material-design-icons/Pause.vue";
-import { Synth } from "tone";
 
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
@@ -51,24 +50,25 @@ const COLOR_CODES = {
     threshold: ALERT_THRESHOLD
   }
 };
-
-const synth = new Synth({
-  oscillator: {
-    type: "sine2"
-  },
-  envelope: {
-    attack: 1,
-    decay: 1,
-    sustain: 4,
-    release: 1
-  }
-}).toMaster();
+const beepSrc = require("../assets/beep.mp3");
+const longBeepSrc = require("../assets/long_beep.mp3");
+const doubleBeepSrc = require("../assets/double_beep.mp3");
+const beep = new Audio(beepSrc);
+beep.src = beepSrc;
+const longBeep = new Audio(longBeepSrc);
+beep.src = longBeepSrc;
+const doubleBeep = new Audio(doubleBeepSrc);
+beep.src = doubleBeepSrc;
 
 export default {
   props: {
     time: {
       type: Number,
       default: 30
+    },
+    isRest: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -136,6 +136,15 @@ export default {
     this.startTimer();
   },
 
+  beforeDestroy() {
+    beep.removeAttribute("src");
+    beep.load();
+    doubleBeep.removeAttribute("src");
+    doubleBeep.load();
+    longBeep.removeAttribute("src");
+    longBeep.load();
+  },
+
   methods: {
     pause() {
       if (!this.isTimePaused && this.timeLeft > 0) {
@@ -166,15 +175,18 @@ export default {
 
     startTimer() {
       this.timerInterval = setInterval(() => {
-        if (this.timeLeft === 3 || this.timeLeft === 2) {
-          console.log("Trois");
-          console.log("Trois");
-          synth.triggerAttackRelease("A4", "8n");
+        if (!this.isRest && [6, 5, 4, 3, 2].includes(this.timeLeft)) {
+          console.log(this.timeLeft);
+          beep.currentTime = 0;
+          beep.play();
           this.timePassed += 1;
         } else if (this.timeLeft === 1) {
-          console.log("Un");
-          synth.triggerAttackRelease("B5", "4n");
           this.timePassed += 1;
+          if (this.isRest) {
+            doubleBeep.play();
+          } else {
+            longBeep.play();
+          }
         } else if (this.timeLeft < -1) {
           console.log("Zero");
           console.log("times up: ", this.timePassed, " ", this.timeLeft);
